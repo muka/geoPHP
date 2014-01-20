@@ -1,5 +1,7 @@
 <?php
 
+namespace phayes\geoPHP\Geometry;
+
 /**
  * Collection: Abstract class for compound geometries
  *

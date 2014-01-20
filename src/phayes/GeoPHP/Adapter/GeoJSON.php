@@ -1,4 +1,7 @@
 <?php
+
+namespace phayes\geoPHP\Adapter;
+
 /**
  * GeoJSON class : a geojson reader/writer.
  *

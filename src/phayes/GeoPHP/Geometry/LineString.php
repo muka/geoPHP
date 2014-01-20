@@ -1,4 +1,7 @@
 <?php
+
+namespace phayes\geoPHP\Geometry;
+
 /**
  * LineString. A collection of Points representing a line.
  * A line can have more than one segment.

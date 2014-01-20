@@ -1,5 +1,8 @@
 <?php
 
+namespace phayes\geoPHP\Geometry;
+
+
 /**
  * Geometry abstract class
  */

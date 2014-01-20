@@ -1,4 +1,7 @@
 <?php
+
+namespace phayes\geoPHP\Adapter;
+
 /*
  * Copyright (c) Patrick Hayes
  * Copyright (c) 2010-2011, Arnaud Renevier

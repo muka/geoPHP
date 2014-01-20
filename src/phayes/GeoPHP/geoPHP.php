@@ -6,31 +6,14 @@
  * This code is open-source and licenced under the Modified BSD License.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
+ * 2014-01-20 muka <luca.capra@gmail.com>
  */
 
-// Adapters
-include_once("lib/adapters/GeoAdapter.class.php"); // Abtract class
-include_once("lib/adapters/GeoJSON.class.php");
-include_once("lib/adapters/WKT.class.php");
-include_once("lib/adapters/EWKT.class.php");
-include_once("lib/adapters/WKB.class.php");
-include_once("lib/adapters/EWKB.class.php");
-include_once("lib/adapters/KML.class.php");
-include_once("lib/adapters/GPX.class.php");
-include_once("lib/adapters/GeoRSS.class.php");
-include_once("lib/adapters/GoogleGeocode.class.php");
-include_once("lib/adapters/GeoHash.class.php");
+namespace phayes\geoPHP;
 
-// Geometries
-include_once("lib/geometry/Geometry.class.php"); // Abtract class
-include_once("lib/geometry/Point.class.php");
-include_once("lib/geometry/Collection.class.php"); // Abtract class
-include_once("lib/geometry/LineString.class.php");
-include_once("lib/geometry/MultiPoint.class.php");
-include_once("lib/geometry/Polygon.class.php");
-include_once("lib/geometry/MultiLineString.class.php");
-include_once("lib/geometry/MultiPolygon.class.php");
-include_once("lib/geometry/GeometryCollection.class.php");
+use Adapter;
+use Geometry;
 
 class geoPHP {
 
@@ -104,6 +87,15 @@ class geoPHP {
         'geohash' => 'GeoHash',
     );
 
+    static private $geometryList = array(
+        'point' => 'Point',
+        'linestring' => 'LineString',
+        'polygon' => 'Polygon',
+        'multipoint' => 'MultiPoint',
+        'multilinestring' => 'MultiLineString',
+        'multipolygon' => 'MultiPolygon',
+        'geometrycollection' => 'GeometryCollection',
+    );
 
     static function registerAdapterMap($type, $class) {
         return self::$adapterMap[$type] = $class;
@@ -113,16 +105,12 @@ class geoPHP {
         return self::$adapterMap;
     }
 
+    static function registerGeometryList($name, $class) {
+        self::$geometryList[$name] = $class;
+    }
+
     static function geometryList() {
-        return array(
-            'point' => 'Point',
-            'linestring' => 'LineString',
-            'polygon' => 'Polygon',
-            'multipoint' => 'MultiPoint',
-            'multilinestring' => 'MultiLineString',
-            'multipolygon' => 'MultiPolygon',
-            'geometrycollection' => 'GeometryCollection',
-        );
+        return self::geometryList;
     }
 
     static function geosInstalled($force = NULL) {

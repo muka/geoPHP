@@ -1,4 +1,7 @@
 <?php
+
+namespace phayes\geoPHP\Adapter;
+
 /*
  * (c) Patrick Hayes
  *
